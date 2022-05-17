@@ -6,14 +6,6 @@ cmake_minimum_required (VERSION 2.8)
 #   * dot = for automatically generated UML diagrams (class, include, caller, call, collaboration)
 #   * PlantUML = for easy generation of custom diagrams
 
-# Helper functions
-macro(path_linux_to_win MsysPath ResultingPath)
-  string(REGEX REPLACE "^/([a-zA-Z])/" "\\1:/" ${ResultingPath} "${MsysPath}")
-endmacro()
-macro(path_win_to_linux MsysPath ResultingPath)
-  string(REGEX REPLACE "^([a-zA-Z]):/" "/\\1/" ${ResultingPath} "${MsysPath}")
-endmacro()
-
 # enable if doxygen found
 find_package(Doxygen 1.8.0)
 message(STATUS "Can build doc?                            ${DOXYGEN_FOUND}")
@@ -34,12 +26,6 @@ if(DOXYGEN_FOUND)
     else()
         message(STATUS "  + Graphviz/Dot - for generated graphs   YES ")
     endif()
-
-    path_win_to_linux(${CMAKE_CURRENT_SOURCE_DIR} CMAKE_CURRENT_SOURCE_DIR_LINUX)
-    path_win_to_linux(${PROJECT_SOURCE_DIR} PROJECT_SOURCE_DIR_LINUX)
-    path_win_to_linux(${DOT_PATH} DOT_PATH_LINUX)
-    path_win_to_linux(${PLANT_UML_PATH} PLANT_UML_PATH_LINUX)
-    path_win_to_linux(${CMAKE_CURRENT_BINARY_DIR} CMAKE_CURRENT_BINARY_DIR_LINUX)
 
     # configure doxygen configuration file
     set(doxyfile_in ${CMAKE_CURRENT_SOURCE_DIR}/doxygen/Doxyfile.in)
