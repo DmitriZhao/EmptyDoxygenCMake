@@ -13,9 +13,11 @@ PROJECT_NAME           = "@CMAKE_PROJECT_NAME@"
 PROJECT_NUMBER         = @PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@
 STRIP_FROM_PATH        = @CMAKE_CURRENT_SOURCE_DIR@ \ 
                          @PROJECT_SOURCE_DIR@
-INPUT                  = @CMAKE_CURRENT_SOURCE_DIR@
-#                         @PROJECT_SOURCE_DIR@/source \
-#                         @PROJECT_SOURCE_DIR@/readme.md
+INPUT                  = @CMAKE_CURRENT_SOURCE_DIR@ \
+                         @PROJECT_SOURCE_DIR@/src \
+                         @PROJECT_SOURCE_DIR@/include \
+                         @PROJECT_SOURCE_DIR@/test \
+                         @PROJECT_SOURCE_DIR@/README.md
 FILE_PATTERNS          = *.h \
                          *.hpp \
                          *.hh \
@@ -26,8 +28,8 @@ FILE_PATTERNS          = *.h \
                          *.md
 # EXCLUDE_PATTERNS       = json.hpp
 RECURSIVE              = YES
-USE_MDFILE_AS_MAINPAGE = "@CMAKE_CURRENT_SOURCE_DIR@/readme.md"
-#USE_MDFILE_AS_MAINPAGE = "@PROJECT_SOURCE_DIR@/readme.md"
+USE_MDFILE_AS_MAINPAGE = "@CMAKE_CURRENT_SOURCE_DIR@/README.md"
+#USE_MDFILE_AS_MAINPAGE = "@PROJECT_SOURCE_DIR@/README.md"
 # output location
 HTML_OUTPUT            = "@CMAKE_CURRENT_BINARY_DIR@/doc"
 
